@@ -1,0 +1,21 @@
+{
+  "name": "wetube--recap",
+  "version": "1.0.0",
+  "description": "Wetube Clone using NodeJS!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thddlsgur0105/wetube-recap.git"
+  },
+  "scripts": {
+    "win": "node index.js"
+  },
+  "author": "Daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thddlsgur0105/wetube-recap/issues"
+  },
+  "homepage": "https://github.com/thddlsgur0105/wetube-recap#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
