@@ -7,7 +7,7 @@
     "url": "git+https://github.com/thddlsgur0105/wetube-recap.git"
   },
   "scripts": {
-    "win": "node index.js"
+    "dev": "nodemon --exec babel-node index.js"
   },
   "author": "Daniel",
   "license": "MIT",
@@ -17,5 +17,11 @@
   "homepage": "https://github.com/thddlsgur0105/wetube-recap#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "nodemon": "^2.0.7"
   }
 }
