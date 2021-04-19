@@ -7,7 +7,7 @@
     "url": "git+https://github.com/thddlsgur0105/wetube-recap.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js"
+    "dev": "nodemon --exec babel-node src/server.js"
   },
   "author": "Daniel",
   "license": "MIT",
