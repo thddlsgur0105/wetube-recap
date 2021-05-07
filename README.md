@@ -2,6 +2,8 @@
 
 ## Divide And Conquer
 
+## Mixins are smart partials
+
 [o] / -> Home
 [o] /join -> Join
 [o] /login -> Login
