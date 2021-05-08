@@ -4,7 +4,7 @@
 
 ## Mixins are smart partials
 
-[o] / -> Home
+[o] / -> Home c: trending
 [o] /join -> Join
 [o] /login -> Login
 [o] /search -> Search
@@ -16,10 +16,10 @@
 [o] /users/delete -> Delete MY user
 
 <!-- Video Domain -->
-[-] /videos/:id -> Watch Video
-[-] /videos/:id/edit -> Edit Video
-[-] /videos/:id/delete -> Delete Video
-[-] /videos/upload -> Upload Video
+[-] /videos/:id -> Watch Video c: see
+[-] /videos/:id/edit -> Edit Video c: edit
+[-] /videos/:id/delete -> Delete Video c: deleteVideo
+[-] /videos/upload -> Upload Video c: upload
 
 
 [-] /videos/comments -> Comment on a video
