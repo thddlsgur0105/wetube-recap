@@ -1,6 +1,5 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
-
-mongoose.set('useCreateIndex', true);
 
 const userSchema = mongoose.Schema({
     email: { type: String, required: true, unique: true },
@@ -9,6 +8,10 @@ const userSchema = mongoose.Schema({
     name: { type: String, required: true },
     location: String,
 });
+
+userSchema.pre("save", async function() {
+    this.password = await bcrypt.hash(this.password, 5);
+})
 
 const User = mongoose.model("User", userSchema);
 
