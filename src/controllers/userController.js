@@ -23,7 +23,13 @@ export const postJoin = async (req, res) => {
         return res.status(400).render("join", { pageTitle: "Join", errorMessage: error._message })
     }
 };
-export const edit = (req, res) => res.send("Edit User");
+
+export const getEdit = (req, res) => {
+    return res.render("edit-profile", { pageTitle: "Edit Profile" })
+}
+export const postEdit = (req, res) => {
+    return res.render("edit-profile");
+}
 
 export const getLogin = (req, res) => res.render("login", { pageTitle: "Login" });
 export const postLogin = async (req, res) => {
@@ -87,6 +93,7 @@ export const finishGithubLogin = async (req, res) => {
         })).json();
         const emailObj = emailData.find(email => email.primary === true && email.verified === true)
         if (!emailObj) {
+            // set notification
             return res.redirect("/login");
         }
         let user = await User.findOne({ email: emailObj.email });
