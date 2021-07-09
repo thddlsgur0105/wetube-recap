@@ -27,8 +27,33 @@ export const postJoin = async (req, res) => {
 export const getEdit = (req, res) => {
     return res.render("edit-profile", { pageTitle: "Edit Profile" })
 }
-export const postEdit = (req, res) => {
-    return res.render("edit-profile");
+export const postEdit = async (req, res) => {
+    const { session: { user, user: { _id } }, body: { name, email, username, location } } = req;
+    let updatedData = [
+        user.name !== name ? { name } : null,
+        user.email !== email ? { email } : null,
+        user.username !== username ? { username } : null,
+        user.location !== location ? { location } : null,
+    ];
+
+    updatedData = updatedData.filter(data => data !== null);
+    
+    const exists = await User.exists({
+        $or: updatedData
+    })
+
+    if (exists) {
+        return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This name/username/email/location is already taken." });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(_id, {
+      name,
+      email,
+      username,
+      location,  
+    }, { new: true });
+    req.session.user = updatedUser;
+    return res.redirect("/users/edit");
 }
 
 export const getLogin = (req, res) => res.render("login", { pageTitle: "Login" });
