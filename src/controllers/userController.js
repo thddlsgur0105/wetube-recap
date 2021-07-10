@@ -28,7 +28,7 @@ export const getEdit = (req, res) => {
     return res.render("edit-profile", { pageTitle: "Edit Profile" })
 }
 export const postEdit = async (req, res) => {
-    const { session: { user, user: { _id } }, body: { name, email, username, location }, file } = req;
+    const { session: { user, user: { _id, avatarUrl } }, body: { name, email, username, location }, file } = req;
     console.log("This is file info", file);
     let updatedData = [
         user.name !== name ? { name } : null,
@@ -38,27 +38,25 @@ export const postEdit = async (req, res) => {
     ];
 
     updatedData = updatedData.filter(data => data !== null);
+
+    // Form 에서 수정된 내용이 있는 경우
+    if (updatedData.length > 0) {
+        const exists = await User.exists({
+            $or: updatedData
+        })
     
-    // 내용 수정 X
-    if (updatedData.length === 0) {
-        return res.redirect("/users/edit");
+        // 수정된 내용 중 일부가 겹치는 경우 필터링 과정
+        if (exists) {
+            return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This name/username/email/location is already taken." });
+        }
     }
 
-    const exists = await User.exists({
-        $or: updatedData
-    })
-
-    // 내용 수정 & 중복 UserData 존재 O
-    if (exists) {
-        return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This name/username/email/location is already taken." });
-    }
-
-    // 내용 수정 & 중복 UserData 존재 X
     const updatedUser = await User.findByIdAndUpdate(_id, {
-      name,
-      email,
-      username,
-      location,  
+        avatarUrl: file ? file.path : avatarUrl,
+        name,
+        email,
+        username,
+        location,  
     }, { new: true });
     req.session.user = updatedUser;
     return res.redirect("/users/edit");
