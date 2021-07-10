@@ -146,4 +146,18 @@ export const logout = (req, res) => {
     console.log("Hi!", req.session)
     return res.redirect("/");
 };
+
+export const getChangePassword = (req, res) => {
+    if (req.session.user.socialOnly === true) {
+        return res.redirect("/");
+    }
+    return res.render("users/change-password", { pageTitle: "Change Password" })
+}
+
+export const postChangePassword = (req, res) => {
+    // send notification
+    return res.redirect("/")
+}
+
 export const see = (req, res) => res.send("See User Profile");
+
