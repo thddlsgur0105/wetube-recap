@@ -1,26 +1,35 @@
-# Wetube Clone built using NodeJS, Express, Mongo and ES6
+# Wetube Clone Studying
 
-## Divide And Conquer
+## 상태
+* ### 진행중
+* ### 두 번째 클론코딩 복습
 
-## Mixins are smart partials
+<hr>
 
-[o] / -> Home c: trending
-[o] /join -> Join
-[o] /login -> Login
-[o] /search -> Search
+## 사용 언어
 
-<!-- User Domain -->
-[o] /users/:id -> See User Profile
-[o] /users/logout -> Log Out
-[o] /users/edit -> Edit MY Profile
-[o] /users/delete -> Delete MY user
+![Javascript Badge](https://img.shields.io/badge/-Javascript-%23F7DF1E)
+![MongoDB Badge](https://img.shields.io/badge/-MongoDB-%2347A248)
+![Pug Badge](https://img.shields.io/badge/-Pug-%23A86454)
+![Node.js Badge](https://img.shields.io/badge/-Node.js-%23339933)
 
-<!-- Video Domain -->
-[-] /videos/:id -> Watch Video c: see
-[-] /videos/:id/edit -> Edit Video c: edit
-[-] /videos/:id/delete -> Delete Video c: deleteVideo
-[-] /videos/upload -> Upload Video c: upload
+<hr>
 
-
-[-] /videos/comments -> Comment on a video
-[-] /videos/comments/delete -> Delete a comment
+## 라우터 
+### **Home**
+  + [x] / -> Home c: trending
+  + [x] /join -> Join
+  + [x] /login -> Login
+  + [x] /search -> Search
+### **User Domain**
+  + [x] /users/:id -> See User Profile
+  + [x] /users/logout -> Log Out
+  + [x] /users/edit -> Edit MY Profile
+  + [x] /users/delete -> Delete MY user
+### **Video Domain**
+  + [ ] /videos/:id -> Watch Video c: see
+  + [ ] /videos/:id/edit -> Edit Video c: edit
+  + [ ] /videos/:id/delete -> Delete Video c: deleteVideo
+  + [ ] /videos/upload -> Upload Video c: upload
+  + [ ] /videos/comments -> Comment on a video
+  + [ ] /videos/comments/delete -> Delete a comment
