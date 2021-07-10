@@ -28,7 +28,8 @@ export const getEdit = (req, res) => {
     return res.render("edit-profile", { pageTitle: "Edit Profile" })
 }
 export const postEdit = async (req, res) => {
-    const { session: { user, user: { _id } }, body: { name, email, username, location } } = req;
+    const { session: { user, user: { _id } }, body: { name, email, username, location }, file } = req;
+    console.log("This is file info", file);
     let updatedData = [
         user.name !== name ? { name } : null,
         user.email !== email ? { email } : null,
@@ -38,14 +39,21 @@ export const postEdit = async (req, res) => {
 
     updatedData = updatedData.filter(data => data !== null);
     
+    // 내용 수정 X
+    if (updatedData.length === 0) {
+        return res.redirect("/users/edit");
+    }
+
     const exists = await User.exists({
         $or: updatedData
     })
 
+    // 내용 수정 & 중복 UserData 존재 O
     if (exists) {
         return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This name/username/email/location is already taken." });
     }
 
+    // 내용 수정 & 중복 UserData 존재 X
     const updatedUser = await User.findByIdAndUpdate(_id, {
       name,
       email,
@@ -143,7 +151,6 @@ export const finishGithubLogin = async (req, res) => {
 
 export const logout = (req, res) => {
     req.session.destroy();
-    console.log("Hi!", req.session)
     return res.redirect("/");
 };
 
