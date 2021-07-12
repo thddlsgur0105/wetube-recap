@@ -33,3 +33,10 @@
   + [ ] /videos/upload -> Upload Video c: upload
   + [ ] /videos/comments -> Comment on a video
   + [ ] /videos/comments/delete -> Delete a comment
+
+<hr>
+
+## 추가
+
+* ### USER PROFILE *( #8 )* 초반 이해 부족
+  * 다시 공부 필요
