@@ -7,8 +7,8 @@
     "url": "git+https://github.com/thddlsgur0105/wetube-recap.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js",
-    "assets": "webpack --config webpack.config.js"
+    "dev:server": "nodemon",
+    "dev:assets": "webpack"
   },
   "author": "Daniel",
   "license": "MIT",
