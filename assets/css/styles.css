@@ -125,9 +125,11 @@ footer {
 
 .search__form {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   max-width: 320px;
   margin: 0 auto;
+  margin-bottom: 60px;
+  position: relative;
 }
 .search__form input {
   all: unset;
@@ -137,11 +139,16 @@ footer {
   background-color: black;
   margin-bottom: 5px;
   color: white;
+  width: 90%;
 }
-.search__form input[type=submit] {
-  background-color: rgba(0, 0, 0, 0.3);
+.search__form button {
+  all: unset;
+  position: absolute;
+  right: 15px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  padding: 10px;
+  cursor: pointer;
 }
 
 a {
