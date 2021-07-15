@@ -1,15 +1,18 @@
 extends base.pug
 
 block content 
-    video(src=`/${video.fileUrl}`, controls, width="80%") 
-    div 
-        p=video.description
-        small=video.createdAt
-    div 
-        small Uploaded by 
-            a(href=`/users/${video.owner._id}`)=video.owner.name
-    if String(loggedInUser._id) === String(video.owner._id)
-        a(href=`${video.id}/edit`) Edit &rarr; 
-        br
-        a(href=`${video.id}/delete`) Delete &rarr; 
+    video.video-player(src=`/${video.fileUrl}`, controls) 
+    //
+        div 
+            p=video.description
+            small=video.createdAt
+        div 
+            small Uploaded by 
+                a(href=`/users/${video.owner._id}`)=video.owner.name
+        if String(loggedInUser._id) === String(video.owner._id)
+            a(href=`${video.id}/edit`) Edit &rarr; 
+            br
+            a(href=`${video.id}/delete`) Delete &rarr; 
     
+block scripts 
+    script(src="/assets/js/videoPlayer.js") 

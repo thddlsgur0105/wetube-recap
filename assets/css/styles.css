@@ -117,6 +117,12 @@ footer {
   font-size: 12px;
 }
 
+.video-player {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
 .empty__message {
   margin-bottom: 50px;
   font-size: 18px;
