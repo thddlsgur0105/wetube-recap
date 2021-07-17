@@ -1,7 +1,7 @@
 extends base.pug
 
 block content 
-    video.video-player(src=`/${video.fileUrl}`, controls) 
+    video.video-player(src=`/${video.fileUrl}`) 
     div
         button#play Play 
         button#mute Mute 
@@ -10,6 +10,10 @@ block content
             span#currentTime 00:00
             span  / 
             span#totalTime 00:00
+        div 
+            input#timeline(type="range", value=0, step="1", min="0")
+
+
     //-
         div 
             p=video.description
