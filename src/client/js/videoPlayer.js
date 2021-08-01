@@ -97,6 +97,27 @@ const handleMouseLeave = () => {
     controlsTimeout = setTimeout(hideControls, 3000);
 }
 
+const handleVideoClick = () => {
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+    playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
+}
+
+const handleKeyPress = (event) => {
+    event.preventDefault();
+    if (event.code === "Space") {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+        playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
+    }
+}
+
 // BTN 
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
@@ -105,6 +126,7 @@ volumeRange.addEventListener("input", handleVolumeChange);
 // VIDEO
 video.addEventListener("loadeddata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
+video.addEventListener("click", handleVideoClick);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 
@@ -113,3 +135,8 @@ timeline.addEventListener("input", handleTimelineChange);
 
 // FULLSCREEN
 fullScreenBtn.addEventListener("click", handleFullscreen);
+
+// DOCUMENT
+document.addEventListener("keypress", handleKeyPress);
+
+/* Video Click & Keyboard Press 시 비디오 play & pause 이미지 생성 challenge */
