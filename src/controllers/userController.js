@@ -150,11 +150,13 @@ export const finishGithubLogin = async (req, res) => {
 
 export const logout = (req, res) => {
     req.session.destroy();
+    req.flash("info", "Bye bye.")
     return res.redirect("/");
 };
 
 export const getChangePassword = (req, res) => {
     if (req.session.user.socialOnly === true) {
+        req.flash("error", "Can't change password.")
         return res.redirect("/");
     }
     return res.render("users/change-password", { pageTitle: "Change Password" })
@@ -169,12 +171,11 @@ export const postChangePassword = async (req, res) => {
     if (newPassword !== newPasswordConfirmation) {
         return res.status(400).render("users/change-password", { pageTitle: "Change Password", errorMessage: "The password does not match the confirmation." })
     }
-    // send notification
     const user = await User.findById(_id);
     user.password =  newPassword;
     await user.save();
     req.session.user.password = user.password;
-    console.log(user.password);
+    req.flash("info", "Password updated.")
     return res.redirect("/users/logout")
 }
 
