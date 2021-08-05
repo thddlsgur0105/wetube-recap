@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     password: { type: String },
     name: { type: String, required: true },
     location: String,
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
     socialOnly: { type: Boolean, default: false },
     videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }]
 });
