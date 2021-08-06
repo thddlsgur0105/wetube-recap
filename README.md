@@ -40,3 +40,4 @@
 
 * ### USER PROFILE *( #8 )* 초반 이해 부족
   * 다시 공부 필요
+* ### #16.8 Code Challenge 해결하기
