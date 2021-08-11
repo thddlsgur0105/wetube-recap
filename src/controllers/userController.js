@@ -50,9 +50,9 @@ export const postEdit = async (req, res) => {
             return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This name/username/email/location is already taken." });
         }
     }
-
+    const isHeroku = process.env.NODE_ENV === "production";
     const updatedUser = await User.findByIdAndUpdate(_id, {
-        avatarUrl: file ? file.location : avatarUrl,
+        avatarUrl: file ? ( isHeroku ? file.location : file.path ) : avatarUrl,
         name,
         email,
         username,
